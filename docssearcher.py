@@ -11,11 +11,13 @@ class DocsResult (object):
 
 def get_search_json (docs):
   if docs == "script":
-    script = open('UnityDocs/script.json', 'r')
+    #script = open('UnityDocs/script.json', 'r')
+    script = open('script.json', 'r')
     jsonData = json.load(script)
     script.close()
   else:
-    manual = open('UnityDocs/manual.json', 'r')
+    #manual = open('UnityDocs/manual.json', 'r')
+    manual = open('manual.json', 'r')
     jsonData = json.load(manual)
     manual.close()
 
