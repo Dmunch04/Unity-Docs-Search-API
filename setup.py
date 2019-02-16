@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(name='unitydocssearcher',
     version='1.0',
-    py_modules=['unitydocs'],
+    py_modules=['docssearcher'],
     author='Munchii',
     author_email='contact@munchii.me',
     license='MIT',
