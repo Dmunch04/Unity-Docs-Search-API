@@ -1,5 +1,15 @@
+import sys
 import json
+if sys.version < '3':
+    from urllib2 import urlopen
+    from urllib import quote as urlquote
+else:
+    from urllib.request import urlopen
+    from urllib.parse import quote as urlquote
 
+URL_SEARCH_MANUAL = 'http://munchii.me/unitydocs/manual.json'
+URL_SEARCH_SCRIPT = 'http://munchii.me/unitydocs/script.json'
+    
 class DocsResult (object):
   def __init__ (self, title, description, url):
     self.title = title
@@ -12,13 +22,15 @@ class DocsResult (object):
 def get_search_json (docs):
   if docs == "script":
     #script = open('UnityDocs/script.json', 'r')
-    script = open('script.json', 'r')
-    jsonData = json.load(script)
+    script = urlopen(URL_SEARCH_SCRIPT).read()
+    #jsonData = json.load(script)
+    jsonData = json.loads(script)
     script.close()
   else:
     #manual = open('UnityDocs/manual.json', 'r')
-    manual = open('manual.json', 'r')
-    jsonData = json.load(manual)
+    manual = urlopen(URL_SEARCH_MANUAL).read()
+    #jsonData = json.load(manual)
+    jsonData = json.loads(manual)
     manual.close()
 
   return jsonData
