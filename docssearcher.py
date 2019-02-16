@@ -25,13 +25,13 @@ def get_search_json (docs):
     script = urlopen(URL_SEARCH_SCRIPT).read()
     #jsonData = json.load(script)
     jsonData = json.loads(script)
-    script.close()
+    #script.close()
   else:
     #manual = open('UnityDocs/manual.json', 'r')
     manual = urlopen(URL_SEARCH_MANUAL).read()
     #jsonData = json.load(manual)
     jsonData = json.loads(manual)
-    manual.close()
+    #manual.close()
 
   return jsonData
 
