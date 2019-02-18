@@ -1,5 +1,13 @@
 import sys
 import json
+if sys.version < '3':
+    from urllib2 import urlopen
+    from urllib import quote as urlquote
+else:
+    from urllib.request import urlopen
+    from urllib.parse import quote as urlquote
+
+URL_SEARCH = 'http://munchii.me/unitydocs/{0}.json'
 
 class DocsResult (object):
   def __init__ (self, title, description, url):
@@ -11,8 +19,10 @@ class DocsResult (object):
     return '%s: %s (%d)' % (self.title, self.description, self.url)
 
 def get_search_json (docs):
-  rawData = open('UnityDocs.' + docs + '.json')
+  #rawData = open('UnityDocs.' + docs + '.json')
+  rawData = urlopen(URL_SEARCH.format(docs))
 
+  #jsonData = json.loads(rawData)
   jsonData = json.load(rawData)
 
   return jsonData
