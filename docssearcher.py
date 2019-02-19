@@ -21,11 +21,11 @@ class DocsResult (object):
 def get_search_json (docs):
   #rawData = open('UnityDocs.' + docs + '.json')
   url = URL_SEARCH.format(docs)
-  print(url)
+  #print(url)
   rawData = urlopen(url)
 
-  #jsonData = json.loads(rawData)
-  jsonData = json.load(rawData)
+  jsonData = json.loads(rawData)
+  #jsonData = json.load(rawData)
 
   return jsonData
 
