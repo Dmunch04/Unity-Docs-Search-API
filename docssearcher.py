@@ -37,7 +37,8 @@ def parse_search_json (searchItem, json):
       result = DocsResult(str(element['title']), str(element['description']), str(element['link']))
       results.append(result)
 
-  return results[0]
+  #return results[0]
+  return results
 
 def search (search, docs):
   json = get_search_json (docs)
